@@ -229,7 +229,7 @@ function UpdatePosition(PlayerPos){
 function CheckMovement(){
   //Move the player
   var PlayerSpeed = 1;
-  console.log(KeyPressed);
+  //console.log(KeyPressed);
 
   if(KeyPressed.a != "a"){
       //Left Movement
