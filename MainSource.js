@@ -10,59 +10,6 @@ var KeyPressed = {
 
 var PlayerPos = {};
 
-class Enemy{
-  constructor(ctx){
-    this.ctx = ctx;
-    this.x = Math.floor(Math.random() * 1700);
-    this.y = Math.floor(Math.random() * 400) + 50; //Between 50 and 500, this way the object doesn't leave the play field
-    this.GoingRight = true
-  }
-
-  Draw(){
-    this.ctx.beginPath();
-    this.ctx.moveTo(this.x + 50, this.y + 50);
-    this.ctx.lineTo(this.x - 50, this.y +  50);
-    this.ctx.stroke();
-
-    this.ctx.beginPath();
-    this.ctx.moveTo(this.x + 50, this.y + 50);
-    this.ctx.lineTo(this.x + 50, this.y - 50);
-    this.ctx.stroke();
-
-    this.ctx.beginPath();
-    this.ctx.moveTo(this.x - 50, this.y - 50);
-    this.ctx.lineTo(this.x + 50, this.y - 50);
-    this.ctx.stroke();
-
-    this.ctx.beginPath();
-    this.ctx.moveTo(this.x - 50, this.y + 50);
-    this.ctx.lineTo(this.x - 50, this.y - 50);
-    this.ctx.stroke();
-  }
-  UpdatePosition(){
-
-    let EnemySpeed = 5;
-
-    if(this.x > 1640){
-      this.GoingRight = false;
-    }
-
-    if(this.x < 60){
-      this.GoingRight = true;
-    }
-
-    if(this.GoingRight == true){
-      this.x = this.x + EnemySpeed;
-    }
-
-    if(this.GoingRight == false){
-      this.x = this.x - EnemySpeed;
-    }
-  }
-
-};
-
-
 /**
 *SET UP
 **/
@@ -141,11 +88,15 @@ function DrawMainScreen(){
   ctx.stroke();
 
   enemy = new Enemy(ctx);
-  console.log(enemy)
 
-  //document.addEventListener('keydown', function(event){AddKey(event);});
+
   AddkeyBoardListener();
-  var loop = setInterval(function(){LoopFunct(Canvas, PlayerPos, ctx);}, 10);
+  var loop = setInterval(
+    function(){
+      LoopFunct(Canvas, PlayerPos, ctx);
+    },
+      10
+  );
 
 }
 
@@ -228,8 +179,7 @@ function UpdatePosition(PlayerPos){
 
 function CheckMovement(){
   //Move the player
-  var PlayerSpeed = 1;
-  //console.log(KeyPressed);
+  var PlayerSpeed = 10;
 
   if(KeyPressed.a != "a"){
       //Left Movement
