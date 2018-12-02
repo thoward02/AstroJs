@@ -1,17 +1,20 @@
-<! -- Main Container -->
+<!-- Main Container -->
 
 
 <html>
   <head>
     <script src='Enemy.js'></script>
+    <script src='Questions.js'></script>
     <script src='MainSource.js'></script>
   </head>
 
   <body style='background-color:black;'>
-
+    <div id="question">
+        LOADING...
+    </div>
     <canvas id="GameBody">
     </canvas>
-    <div id="enemy">
+    <div id="enemy" class="enemy">
       TEST
     </div>
   <style>
@@ -20,11 +23,26 @@
       overflow: hidden;
     }
 
+    #question{
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 10%;
+      background-color: black;
+      color: white;
+      font-size: 20px;
+    }
+
     #GameBody {
-      marginTop: 0;
+      marginTop: 10%;
       position: absolute;
       z-index: -1;
     }
+
+    .enemy{
+      font-size: 20px;
+    }
+
     #enemy {
       position: absolute;
       z-index: 1;

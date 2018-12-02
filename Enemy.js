@@ -29,11 +29,11 @@ class Enemy{
     this.ctx.stroke();
   }
   UpdatePosition(){
-    let EnemySpeed = 5;
+    let EnemySpeed = 1;
     this.enemybox.style.marginLeft = this.x - 49;
     this.enemybox.style.marginTop = this.y  - 49;
 
-    if(this.x > 1640){
+    if(this.x > window.GameWidth - 60){
       this.GoingRight = false;
     }
 

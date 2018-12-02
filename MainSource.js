@@ -22,7 +22,9 @@ var PlayerPos = {};
 function Start(){
 
   SetUpCanvas(); //First we're gonna set the size and width of the canvas to the size and width of our browser window
+  SetUpQuestions();
   DrawMainScreen();
+
 
 }
 
@@ -35,7 +37,9 @@ function SetUpCanvas(){
 
   //Get the X and Y len of window
   let x = parseInt(window.screen.width);
-  let y = parseInt(window.screen.height);
+  let y = parseInt(window.screen.height) * 0.9;
+  window.GameWidth = x;
+  window.GameHeight = y;
 
   console.log("[ -- Working at X: "+x+"  and Y: "+y+" -- ]");
 
