@@ -1,5 +1,4 @@
 
-boxY = []
 class Enemy{
   constructor(ctx, id){
     //Set context
@@ -9,51 +8,7 @@ class Enemy{
     this.x = Math.floor(Math.random() * 1700);
 
     //Set the y cord
-
-    console.log("BOX ID:" + id)
-    this.IsMatch = false;
-    this.loopnum = 0
-    //Loop
-      while(this.IsMatch == false){
-        console.log("-LOOP NUM : " + this.loopnum)
-        this.PotY = Math.floor(Math.random() * 400) + 100;
-        console.log("--POTENTIAL NUM: " + this.PotY)
-        this.Nums = [];
-        this.Count = 0;
-
-        console.log("--CREATING LIST OF NUMBERS")
-        for(var num in boxY){
-          this.Nums[this.Count] = this.PotY - boxY[num]
-        }
-
-        this.PotMatch = true;
-
-        console.log("--CHECKING NUMBERS")
-        for(var stuff in this.Nums){
-
-          this.number = Math.abs(this.Nums[stuff]);
-          console.log("--THIS NUMBER IS: " + this.number + " On number " + stuff + " of "+ this.Nums);
-
-          if(this.number < 150){
-            //Box is not a match
-            this.PotMatch = false;
-            console.log("--- y is not a match --");
-          }
-
-        }
-        if(this.PotMatch == true){
-          this.IsMatch = true;
-        }
-        this.Count = this.Count++;
-        //End of while loop If it is a match this.y will become potential Y
-        this.loopnum = this.loopnum + 1
-
-
-    }
-    boxY[boxY.length] = this.PotY;
-    console.log(boxY)
-    this.y = this.PotY;
-    console.log("The y distance for this box is now " + this.y)
+    this.y =  Math.floor(Math.random() * 400) + 100;
 
 
     this.goright =  Math.floor(Math.random() * 2) + 1;
