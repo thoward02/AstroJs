@@ -1,138 +1,31 @@
-//express webserver
+const electron = require('electron');
 
-//Express
-var express = require("express");
-var app = express();
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 
-//Body Parse
-var bodyParser = require('body-parser');
+const path = require('path');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-//File System
-var fs = require("fs");
-
-/**
-*  -- Pathing --
-*  protocol://host/resources/models/q?=MODELNAME = PATH for calling a model, fbx format, MODELNAME == Modelfilename
-*
-*  protocol://host/ = Main Page
-*
-*  -- Commands --
-*  app.get(PathOnServer, FunctionToBeRan(usersrequest, responsetobesent); // when ever the server gets a "GET" request, the server will check and see if the path declared before matches what you declared in your script
-*
-**/
-
-//Home Page
-app.get("/", function(request, response){
-  console.log("[ -- User Went To Home Page -- ]");
-  response.end("<html>TEST</html>"); //I'll fix this with a main page later
-});
+var MainWindow = null;
 
 
-//Host Play file
-app.get("/playhome/", function(request, response){
+//Create our window
 
-  console.log("[ -- A User Started Playing -- ]");
-  //This will let people play home in their browser C:
-  fs.readFile("./index.html", function(err, data){
-    if(err){
-      console.log("[ -- User Incountered an err: "+ err +" -- ]");
-      response.end(err);
-    }else{
-      response.end(data);
-    }
-
+const CreateWindow = () => {
+  MainWindow = new BrowserWindow({width: 1000, height: 705, frame: false, fullscreen: true, backgroundColor: '#fffff' });
+  MainWindow.loadURL(require('url').format({
+    pathname: path.join(__dirname, 'Source/main.html'), //Our main page where we're gonna load data etc etc
+    protocol: 'file:',
+    slashes: true
+  }));
+  MainWindow.on('closed', () => {
+    mainWindow = null;
   });
-});
+   //Okay I know this negates the whole width and height above, don't judge.
+}
 
 
+app.on('ready', function(){
 
-/**
-*
-* RESOURCE SECTION
-*
-**/
-
-//For Loading Core System Files files from ./source
-app.get("/source/q&=:file", function(request, response){
-  //Fetch File
-  var File = request.params.file;
-  var FilePath = "./source/"+File;
-
-  //Load File
-  fs.readFile(FilePath, function(err, data){
-    if(err){
-      console.log("[ -- User hit Err: "+err+", While Loading "+ FilePath +"-- ]");
-    }else{
-      response.end(data);
-    }
-  });
-});
-
-//Load Models
-
-app.get("/resources/models/q&=:scene/q&=:model", function(request, response){
-  //Set up Model Vars along with pathing
-  var model = request.params.model;
-  var scene = request.params.scene;
-  var pathing = "./source/"+ String(scene) +"/models/"+ String(model) +".fbx";
-  
-  //Fetch File and return it
-  fs.readFile(pathing, function(err, data){
-    if(err){
-      console.log(err);
-      response.end("<html>"+err+"</html>");
-    }else{
-      response.end(data);
-    }
-
-  });
-});
-
-
-/**
-*
-* LOAD SCENES
-*
-**/
-
-//Load Core Scene Files
-app.get("/source/q&=:scene/q&=:file", function(request ,response){
-  //Fetch File names
-  var scene = request.params.scene;
-  var file = request.params.file;
-
-  //Load File
-  fs.readFile("./source/"+ scene +"/"+ file +"", function(err, data){
-    if(err){
-      console.log("[ -- User hit Err: "+err+", While Loading "+ scene +"/"+  file  +"-- ]");
-    }else{
-      response.end(data);
-    }
-  });
-});
-
-
-
-
-
-//If req outside bounds stated here, return to home page
-app.get("*", function(request, response){
-  if(String(request.url) != "/favicon.ico"){
-    //Chrome trys to get websites to include icons to represent their sites. Since the icon is accessed with an http req this function picks it up
-    //Basically the if statements stops clutter in the server log
-    console.log("[-- User Attempted To Load Unindexed Command : Unindexed Command = "+String(request.url)+" --]")
-  }
-
-  //Will catch any unindexed get requests
-  response.redirect("/"); //return home
-});
-
-//Start app on port 80, local host
-app.listen("80", "127.0.0.1", function(){
-
-  console.log("[-- Started --]");
+    CreateWindow();
 
 });
