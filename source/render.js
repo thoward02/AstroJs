@@ -1,26 +1,35 @@
 //Render.js
 
-function SetUpRenderer(){
-//Set up WebGLRenderer
-  window.renderer = new THREE.WebGLRenderer(); //Window so it can be accessed through out the script
+/**
+** Renderer and Loop
+**/
 
-  //Set size and append it
-  renderer.setSize( window.innerWidth, window.innerHeight );
-  document.body.appendChild( renderer.domElement );
-}
+function LoopFunct(Canvas, PlayerPos, ctx){
+  //Clear Screen
+  ctx.clearRect(0, 0, Canvas.width, Canvas.height);
 
-function AnimationLoop(){
-  //Load next frame
-  window.requestAnimationFrame(AnimationLoop);
 
-  //If user is not playing we don't want to animate the scene
 
-  //If the user is playing we want to animate the scene
-  if(window.GAMEINFO.paused == false){
-    //Check For Controls
-    UpdateMovements();
+  //render
+  //If we want to render the player set to true
+  if(window.renderObjects.Player == true){
+    //Check For Movement
+    CheckMovement();
 
-    //Render
-    window.renderer.render(window.scene, window.camera);
+    //Calc Pos
+    var NewPosition = UpdatePosition(PlayerPos);
+    RenderPlayer(NewPosition, ctx);
+  }
+
+  if(window.renderObjects.Enemies == true){
+    for(var items in window.renderObjects.Enemy){
+      //Get pos then draw
+      var NewEnemyPos = window.renderObjects.Enemy[items].UpdatePosition();
+      window.renderObjects.Enemy[items].Draw();
+    }
+
+  }
+  if(window.renderObjects.Stars == true){
+    RenderStars(1000, ctx);
   }
 }
