@@ -1,4 +1,9 @@
+//Enemy.js
 
+//Set up aval space for enemies
+AvalibleSpace = [100, 250, 400];
+
+//Set up the class
 class Enemy{
   constructor(ctx, id){
     //Set context
@@ -8,8 +13,9 @@ class Enemy{
     this.x = Math.floor(Math.random() * 1700);
 
     //Set the y cord
-    this.y =  Math.floor(Math.random() * 400) + 100;
-
+    this.y =  AvalibleSpace[AvalibleSpace.length - 1]; //Takes out the last item in the list, and puts it as the y coordinate
+    console.log(AvalibleSpace)
+    AvalibleSpace.splice(AvalibleSpace.length - 1, AvalibleSpace.length - 1)
 
     this.goright =  Math.floor(Math.random() * 2) + 1;
     if(this.goright == 1){
