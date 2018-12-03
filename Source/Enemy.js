@@ -71,3 +71,14 @@ class Enemy{
   }
 
 };
+
+
+function SetUpEnemies(NumberOfEnemies, ctx){
+
+  for(var num = 0; num < NumberOfEnemies; num++){
+
+    window.renderObjects.Enemy[num] = new Enemy(ctx, num);
+
+  }
+
+}

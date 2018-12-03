@@ -14,17 +14,11 @@ var PlayerPos = {};
 *SET UP
 **/
 
-
-
-
-
-
 function Start(){
 
   SetUpCanvas(); //First we're gonna set the size and width of the canvas to the size and width of our browser window
   SetUpQuestions();
   DrawMainScreen();
-
 
 }
 
@@ -67,7 +61,7 @@ function DrawMainScreen(){
 
   console.log("[ -- Our PlayerPos is: "+PlayerPos.x+", "+PlayerPos.y+" --]");
 
-
+  //Set objects to be rendered
   window.renderObjects = {
     "Player" : true,
     "Stars" : true,
@@ -75,13 +69,12 @@ function DrawMainScreen(){
     "Enemy" : {}
     }
 
-  //enemy = new Enemy(ctx);
-  for(var num = 0; num < 4; num++){
-    window.renderObjects.Enemy[num] = new Enemy(ctx, num)
-    //console.log(window.renderObjects.Enemy)
-  }
+  //Set up enemies
+  SetUpEnemies(3, ctx);
 
+  //Set up keyboard
   AddkeyBoardListener();
+
   var loop =
     setInterval(
       function(){
@@ -89,60 +82,6 @@ function DrawMainScreen(){
       },
       10
     );
-
-}
-
-/**
-** Movement
-**/
-
-function UpdatePosition(PlayerPos){
-  return PlayerPos
-}
-
-function CheckMovement(){
-  //Move the player
-  var PlayerSpeed = 10;
-
-  if(KeyPressed.a != "a"){
-      //Left Movement
-      PlayerPos.x = PlayerPos.x + PlayerSpeed;
-  }
-
-  if(KeyPressed.d != "d"){
-      //Right Movement
-      PlayerPos.x = PlayerPos.x - PlayerSpeed;
-  }
-
-
-}
-
-function AddkeyBoardListener(){
-  document.addEventListener("keydown",function(e){
-      var key = e.keyCode;
-
-      if(key == 65){
-        KeyPressed.a = "a";
-      }
-
-      if(key == 68){
-          KeyPressed.d = "d";
-      }
-    }
-  );
-  document.addEventListener("keyup",function(e){
-      var key = e.keyCode;
-
-      if(key == 65){
-        KeyPressed.a = "";
-      }
-
-      if(key == 68){
-          KeyPressed.d = "";
-      }
-    }
-  );
-
 
 }
 
