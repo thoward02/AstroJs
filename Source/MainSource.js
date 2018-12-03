@@ -54,7 +54,7 @@ function DrawMainScreen(){
 
   PlayerPos = {
     x : parseInt(Canvas.style.width) / 2,
-    y : (parseInt(Canvas.style.height) / 4) * 3,
+    y : (parseInt(Canvas.style.height) / 4) * 4,
     a : 90
 
   }
