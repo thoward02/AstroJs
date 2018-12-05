@@ -26,12 +26,29 @@ function SetUpQuestions(){
   CurrentQuestionId = Math.floor(Math.random() * questions.length);
   CurrentQuestion = Cquestions[CurrentQuestionId];
   QBox.innerHTML = 'What figure of speech is this: "' + CurrentQuestion + '" ?';
+  ListOfAnw = Canw;
+  ListOfAnw.splice(CurrentQuestionId, 1)
 
-  //Set upAnwser
-  QAnwser = document.getElementById("enemy");
-  QAnwser.innerHTML =  anw[CurrentQuestionId]
-  QAnwser.classList.add("Answer");
-  QAnwser.style.background = "black";
+  //Set up Anwsers
+  for(var num in window.renderObjects.Enemy){
+
+    if(window.renderObjects.Enemy[num].right == 0){
+      window.renderObjects.Enemy[num].enemybox.innerHTML = anw[CurrentQuestionId];
+      console.log(CurrentQuestionId + anw)
+      document.body.appendChild(window.renderObjects.Enemy[num].enemybox);
+    }else{
+      console.log("y")
+      anwId = Math.floor(Math.random() * ListOfAnw.length)
+      anwS = ListOfAnw[anwId];
+      ListOfAnw.splice(anwId, 1);
+
+      window.renderObjects.Enemy[num].enemybox.innerHTML = anwS;
+      document.body.appendChild(window.renderObjects.Enemy[num].enemybox);
+
+
+
+    }
+  }
 
 }
 
@@ -39,6 +56,6 @@ function GetRidOfQuestion(Question){
   //Question should be question ID
 
   //Remove Question
-  Cquestions.splice(Question, Question); 
+  Cquestions.splice(Question, Question);
 
 }

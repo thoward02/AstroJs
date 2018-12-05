@@ -17,8 +17,8 @@ var PlayerPos = {};
 function Start(){
 
   SetUpCanvas(); //First we're gonna set the size and width of the canvas to the size and width of our browser window
-  SetUpQuestions();
   DrawMainScreen();
+  SetUpQuestions();
 
 }
 

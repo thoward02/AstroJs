@@ -1,11 +1,11 @@
 //Enemy.js
 
 //Set up aval space for enemies
-AvalibleSpace = [100, 250, 400];
+AvalibleSpace = [200, 350, 500];
 
 //Set up the class
 class Enemy{
-  constructor(ctx, id){
+  constructor(ctx, id, right){
     //Set context
     this.ctx = ctx;
 
@@ -14,19 +14,27 @@ class Enemy{
 
     //Set the y cord
     this.y =  AvalibleSpace[AvalibleSpace.length - 1]; //Takes out the last item in the list, and puts it as the y coordinate
-    console.log(AvalibleSpace)
+
+    //Update space
     AvalibleSpace.splice(AvalibleSpace.length - 1, AvalibleSpace.length - 1)
 
+    //Randomize movement
     this.goright =  Math.floor(Math.random() * 2) + 1;
     if(this.goright == 1){
       this.goright = true;
     }else{
       this.goright = false;
     }
+
     //Set it to go right
     this.GoingRight = this.goright;
 
+    this.right = right;
+
     this.enemybox = document.createElement("div");
+    this.enemybox.style.color = "white";
+    this.enemybox.style.fontSize = "20px";
+    this.enemybox.style.position = "absolute";
 
     this.speed = Math.floor(Math.random() * 4) + 1;
     this.enemybox.innerHTML = id;
@@ -80,10 +88,14 @@ class Enemy{
 
 
 function SetUpEnemies(NumberOfEnemies, ctx){
-
+  var IsOneTrue = false;
   for(var num = 0; num < NumberOfEnemies; num++){
-
-    window.renderObjects.Enemy[num] = new Enemy(ctx, num);
+    var right = 1;
+    if(IsOneTrue == false){
+      right = 0;
+      IsOneTrue = true;
+    }
+    window.renderObjects.Enemy[num] = new Enemy(ctx, num, right);
 
   }
 
