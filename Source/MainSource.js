@@ -66,7 +66,10 @@ function DrawMainScreen(){
     "Player" : true,
     "Stars" : true,
     "Enemies" : true,
-    "Enemy" : {}
+    "Enemy" : {},
+    "Bullets" : true,
+    "BulletNum" : 0,
+    "Bullet" : {}
     }
 
   //Set up enemies

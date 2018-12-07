@@ -29,7 +29,23 @@ function LoopFunct(Canvas, PlayerPos, ctx){
     }
 
   }
-  if(window.renderObjects.Stars == true){
+
+  if(window.renderObjects.Stars == false){
     RenderStars(1000, ctx);
+  }
+
+  if(window.renderObjects.Bullets = true){
+    //Update bullet count
+    LenBullets = 0;
+    for(var items in window.renderObjects.Bullet){
+      LenBullets = LenBullets + 1;
+    }
+    window.renderObjects.BulletNum = LenBullets;
+    //Render Bullets
+    console.log(window.renderObjects.BulletNum)
+    for(var items in window.renderObjects.Bullet){
+      window.renderObjects.Bullet[items].Render(ctx)
+    }
+
   }
 }

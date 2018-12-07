@@ -49,6 +49,14 @@ function AddkeyBoardListener(){
       }
     }
   );
+  document.addEventListener("keypress", function(e){
+    var key = e.keyCode;
 
+    //Key E
+    if(key == 101){
+      window.renderObjects.Bullet[window.renderObjects.BulletNum] = new Bullet(window.renderObjects.BulletNum, PlayerPos.x, PlayerPos.y, 10);
+    }
+
+  });
 
 }
