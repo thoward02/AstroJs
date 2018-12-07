@@ -54,6 +54,7 @@ function AddkeyBoardListener(){
 
     //Key E
     if(key == 101){
+      console.log(window.renderObjects.Bullet)
       window.renderObjects.Bullet[window.renderObjects.BulletNum] = new Bullet(window.renderObjects.BulletNum, PlayerPos.x, PlayerPos.y, 10);
     }
 

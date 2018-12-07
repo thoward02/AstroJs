@@ -42,7 +42,8 @@ function LoopFunct(Canvas, PlayerPos, ctx){
     }
     window.renderObjects.BulletNum = LenBullets;
     //Render Bullets
-    console.log(window.renderObjects.BulletNum)
+
+    
     for(var items in window.renderObjects.Bullet){
       window.renderObjects.Bullet[items].Render(ctx)
     }

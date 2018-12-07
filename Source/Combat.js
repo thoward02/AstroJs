@@ -28,7 +28,7 @@ class Bullet{
   }
 
   checkForHit(){
-    if(this.currenty <= 0){
+    if(this.currenty <= -50){
       delete window.renderObjects.Bullet[this.id];
     }
   }
