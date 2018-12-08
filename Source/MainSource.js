@@ -63,6 +63,7 @@ function DrawMainScreen(){
 
   //Set objects to be rendered
   window.renderObjects = {
+    "Render" : true,
     "Player" : true,
     "Stars" : true,
     "Enemies" : true,
@@ -87,6 +88,42 @@ function DrawMainScreen(){
     );
 
 }
+
+
+function DisplayWonScreen(){
+
+  //Stop rendering
+  window.renderObjects.Render = false;
+
+  //Hide canvas
+  GameSpace = document.getElementById("GameSpace");
+  GameSpace.style.display = "none";
+
+  //Display screen
+  DisplayScreen = BuildWinScreen();
+  document.body.appendChild(DisplayScreen);
+}
+
+function DisplayLossScreen(){
+
+  //Stop rendering
+  window.renderObjects.Render = false;
+
+  //Hide Canvas
+  GameSpace = document.getElementById("GameSpace");
+  GameSpace.style.display = "none";
+
+  //Display Screen
+  DisplayScreen = BuildLossScreen();
+  document.body.appendChild(DisplayScreen);
+
+}
+
+
+
+
+
+
 
 // Have everything start running after the resources are loaded
 document.addEventListener("DOMContentLoaded", function(){

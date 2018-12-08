@@ -38,7 +38,7 @@ function SetUpQuestions(){
       Canw.splice(CurrentQuestionId, CurrentQuestionId)
 
       //Append
-      document.body.appendChild(window.renderObjects.Enemy[num].enemybox);
+      document.getElementById("GameSpace").appendChild(window.renderObjects.Enemy[num].enemybox);
 
     }else{
       //If this block isnt the anw
@@ -59,7 +59,7 @@ function SetUpQuestions(){
 
 
       window.renderObjects.Enemy[num].enemybox.innerHTML = anwS;
-      document.body.appendChild(window.renderObjects.Enemy[num].enemybox);
+      document.getElementById("GameSpace").appendChild(window.renderObjects.Enemy[num].enemybox);
 
 
 
@@ -73,5 +73,19 @@ function GetRidOfQuestion(Question){
 
   //Remove Question
   Cquestions.splice(Question, Question);
+
+}
+
+function CheckIfCorrect(Question){
+
+  //Get the enemy
+  var Enemy = window.renderObjects.Enemy[Question];
+
+  if(Enemy.right == 0){
+    //User got the right anw
+    return true;
+  }else{
+    return false;
+  }
 
 }
