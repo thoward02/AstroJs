@@ -3,15 +3,36 @@
 window.questions = [
   "He was as fast as a lightning bolt",
   "He was a walking dictionary",
-  "Boom",
-  "Break a leg"
+  "BOOM",
+  "Break a leg",
+  "POW",
+  "That kid in class is as funny as a clown",
+  "That's the way the cookie crumbles",
+  "I am so hungry I could eat a horse",
+  "I told you to clean your room a hundred times"
+  "The sky turned dreary as the glum clouds enveloped it",
+  "Peter piper picked a peck of pickled peppers",
+  "Sally sells seashells by the seashore",
+  "Don’t go bacon my heart",
+  "You wanna pizza me"
 ]
 
 window.anw = [
   "Simile",
   "Metaphor",
   "Onomatopoeia",
-  "Idiom"
+  "Idiom",
+  "Onomatopoeia",
+  "Simile",
+  "Idiom",
+  "Hyperbole",
+  "Hyperbole",
+  "Personification",
+  "Personification",
+  "Alliteration",
+  "Alliteration",
+  "Pun",
+  "Pun"
 ]
 
 Cquestions = window.questions;
