@@ -13,12 +13,32 @@ function CheckMovement(){
 
   if(KeyPressed.a != "a"){
       //Left Movement
-      PlayerPos.x = PlayerPos.x + PlayerSpeed;
+      if(PlayerPos.x > 51 && PlayerPos.x < 1869){
+        PlayerPos.x = PlayerPos.x + PlayerSpeed;
+      }
+      else{
+        if(PlayerPos.x == 50){
+          PlayerPos.x = 60;
+        }
+        if(PlayerPos.x == 1870){
+          PlayerPos.x = 1860;
+        }
+      }
   }
 
   if(KeyPressed.d != "d"){
       //Right Movement
-      PlayerPos.x = PlayerPos.x - PlayerSpeed;
+      if(PlayerPos.x > 51 && PlayerPos.x < 1869){
+        PlayerPos.x = PlayerPos.x - PlayerSpeed;
+      }
+      else{
+        if(PlayerPos.x == 50){
+          PlayerPos.x = 60;
+        }
+        if(PlayerPos.x == 1870){
+          PlayerPos.x = 1860;
+        }
+      }
   }
 
 
