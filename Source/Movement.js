@@ -35,8 +35,8 @@ function CheckMovement(){
         if(PlayerPos.x == 50){
           PlayerPos.x = 60;
         }
-        if(PlayerPos.x == 1670){
-          PlayerPos.x = 1660;
+        if(PlayerPos.x == 1870){
+          PlayerPos.x = 1860;
         }
       }
   }
