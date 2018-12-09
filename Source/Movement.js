@@ -54,7 +54,11 @@ function AddkeyBoardListener(){
 
     //Key E
     if(key == 101){
-      window.renderObjects.Bullet[window.renderObjects.BulletNum] = new Bullet(window.renderObjects.BulletNum, PlayerPos.x, PlayerPos.y, 10);
+      if(window.renderObjects.Render == true){
+        window.renderObjects.Bullet[window.renderObjects.BulletNum] = new Bullet(window.renderObjects.BulletNum, PlayerPos.x, PlayerPos.y, 10);
+      }else{
+        location.reload();
+      }
     }
 
   });

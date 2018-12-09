@@ -33,7 +33,7 @@ function SetUpQuestions(){
 
     if(window.renderObjects.Enemy[num].right == 0){
       window.renderObjects.Enemy[num].enemybox.innerHTML = Canw[CurrentQuestionId];
-
+      window.CurrentQuestion = CurrentQuestionId;
       //Take out the Anwser
       Canw.splice(CurrentQuestionId, CurrentQuestionId)
 
@@ -65,14 +65,6 @@ function SetUpQuestions(){
 
     }
   }
-
-}
-
-function GetRidOfQuestion(Question){
-  //Question should be question ID
-
-  //Remove Question
-  Cquestions.splice(Question, Question);
 
 }
 
